@@ -1,10 +1,14 @@
 {
   "name": "react-tooltip-tao",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
-  "main": "publish/ReactTooltip.js",
+  "main": "publish/dist/ReactTooltip.js",
   "babel": {
-    "presets": [ "@babel/react" ]
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ],
+    "plugins": ["@babel/plugin-proposal-class-properties"]
   },
   "dependencies": {
     "react": "^16.9.0",
@@ -16,7 +20,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "trans": "babel public/src --out-dir public/dist"
+    "trans": "babel publish/src --out-dir publish/dist"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -32,5 +36,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.0",
+    "@babel/core": "^7.6.0",
+    "@babel/plugin-syntax-class-properties": "^7.2.0",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/preset-react": "^7.0.0"
   }
 }
