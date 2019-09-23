@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": false,
   "main": "publish/ReactTooltip.js",
+  "babel": {
+    "presets": [ "@babel/react" ]
+  },
   "dependencies": {
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
@@ -12,7 +15,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "trans": "babel public/src --out-dir public/dist"
   },
   "eslintConfig": {
     "extends": "react-app"
