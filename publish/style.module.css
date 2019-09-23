@@ -1,0 +1,85 @@
+.tooltip {
+    /* display : none; */
+    position: absolute;
+    background: rgb(255, 249, 220);
+    box-sizing: border-box;
+    border  : 1px solid;
+    color   : #1a1a1ade;
+    padding : 5px; 
+    border-radius: 2px;
+    visibility: hidden;
+}
+
+.tooltip-top{
+    bottom  : 100%;
+    top     : unset;
+    left    : unset;
+    right   : unset;
+}
+
+.tooltip-bottom{
+    bottom  : unset;
+    top     : 100%;
+    left    : unset;
+    right   : unset;
+}
+
+.tooltip-right{
+    left  : calc(100% + 10px );
+    right : unset;
+    bottom: unset;
+    top   : unset
+}
+
+.tooltip-left{
+    right  : calc(100% + 10px );
+    left   : unset;
+    bottom: unset;
+    top   : unset
+}
+
+@keyframes fadeInOpacity {
+    0% {
+        opacity: 0;
+        /* transform: translateX(-20px); */
+    }
+    100% {
+        opacity: 1;
+        /* transform: translateX(0px); */
+    }
+}
+
+@keyframes fadeOutOpacity {
+    0% {
+        opacity: 1;
+        /* transform: translateX(0px); */
+        visibility: visible;
+    }
+    99% {
+        opacity: 0;
+        /* transform: translateX(20px); */
+    }
+    100% {
+        opacity: 0;
+        /* transform: translateX(20px); */
+        visibility: hidden;
+    }
+}
+
+.show {
+    display : block;
+    opacity: 1;
+    animation-name: fadeInOpacity;
+    animation-iteration-count: 1;
+    animation-duration: .2s;
+    visibility: visible;
+}
+
+.hide {
+    animation-name: fadeOutOpacity;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-duration: .2s;
+    display : block;
+}
+

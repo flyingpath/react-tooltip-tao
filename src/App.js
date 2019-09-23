@@ -9,7 +9,7 @@ function App() {
       <div className = 'top' >
         Learn React
         <ReactTooltip position='right'>
-          12344444444444
+          5678
         </ReactTooltip>
       </div>
       <div className = 'bottom' >
