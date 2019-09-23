@@ -1,28 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 import ReactTooltip from './ReactTooltip'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <div
-          className="App-link"
-          style={{position:'relative'}}
-          onMouseEnter={()=>{console.log('onmouseovera')}}
-        >
-          Learn React
-          <ReactTooltip />
-        </div>
-      </header>
+    <div className="demo">
+      <div className = 'top' >
+        Learn React
+        <ReactTooltip position='right'>
+          12344444444444
+        </ReactTooltip>
+      </div>
+      <div className = 'bottom' >
+        Learn React
+        <ReactTooltip position='right'>
+          12344444444444
+        </ReactTooltip>
+      </div>
+      <div className = 'left' >
+        Learn React
+        <ReactTooltip position='right'>
+          12344444444444
+        </ReactTooltip>
+      </div>
+      <div className = 'right' >
+        Learn React
+        <ReactTooltip position='right'>
+          12344444444444
+        </ReactTooltip>
+      </div>
     </div>
-  );
+  )
 }
 
 export default App;

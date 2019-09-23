@@ -1,63 +1,67 @@
 .tooltip {
     /* display : none; */
     position: absolute;
-    background: #9ed6ff;
+    background: rgb(255, 249, 220);
     box-sizing: border-box;
-    /* border  : 1px solid #0081ff; */
-    color   : red;
-    bottom  : 100%;
+    border  : 1px solid;
+    color   : #1a1a1ade;
     padding : 5px; 
     border-radius: 2px;
     visibility: hidden;
 }
 
-.tooltip::after {
-    position: absolute;
-    border-top  : 5px solid #9ed6ff;
-    border-left : 5px solid transparent;
-    border-right: 5px solid transparent;
-    top: 100%;
-    left: 50%;
-    content: '';
+.tooltip-top{
+    bottom  : 100%;
+    top     : unset;
+    left    : unset;
+    right   : unset;
 }
 
 .tooltip-bottom{
     bottom  : unset;
     top     : 100%;
+    left    : unset;
+    right   : unset;
 }
-.tooltip-bottom::after {
-    position: absolute;
-    border-top  : none;
-    border-bottom  : 5px solid #9ed6ff;
-    top: unset;
-    bottom: 100%;
-    content: '';
+
+.tooltip-right{
+    left  : calc(100% + 10px );
+    right : unset;
+    bottom: unset;
+    top   : unset
+}
+
+.tooltip-left{
+    right  : calc(100% + 10px );
+    left   : unset;
+    bottom: unset;
+    top   : unset
 }
 
 @keyframes fadeInOpacity {
     0% {
         opacity: 0;
-        transform: translateX(-20px);
+        /* transform: translateX(-20px); */
     }
     100% {
         opacity: 1;
-        transform: translateX(0px);
+        /* transform: translateX(0px); */
     }
 }
 
 @keyframes fadeOutOpacity {
     0% {
         opacity: 1;
-        transform: translateX(0px);
+        /* transform: translateX(0px); */
         visibility: visible;
     }
     99% {
         opacity: 0;
-        transform: translateX(20px);
+        /* transform: translateX(20px); */
     }
     100% {
         opacity: 0;
-        transform: translateX(20px);
+        /* transform: translateX(20px); */
         visibility: hidden;
     }
 }
@@ -76,5 +80,6 @@
     animation-fill-mode: forwards;
     animation-iteration-count: 1;
     animation-duration: .2s;
+    display : block;
 }
 
