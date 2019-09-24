@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-import ReactTooltip from './ReactTooltip'
+import ReactTooltip from './components/ReactTooltip'
 
 function App() {
   return (

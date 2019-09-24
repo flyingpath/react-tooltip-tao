@@ -108,6 +108,9 @@ class ReactTooltip extends React.Component {
     }
 
     componentWillUpdate(){
+        if ( !this.ref.current ){
+            return false
+        }
         this.className = ''
         const position       = this.ref.current.getBoundingClientRect()
         // const bodyBoundary   = document.querySelector('body').getBoundingClientRect()
