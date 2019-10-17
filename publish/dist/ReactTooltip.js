@@ -152,10 +152,6 @@ function (_React$Component) {
   }, {
     key: "componentWillUpdate",
     value: function componentWillUpdate() {
-      if (!this.ref.current) {
-        return false;
-      }
-
       this.className = '';
       var position = this.ref.current.getBoundingClientRect(); // const bodyBoundary   = document.querySelector('body').getBoundingClientRect()
 
@@ -164,23 +160,23 @@ function (_React$Component) {
       var height = position.height;
 
       if (this.props.position === 'top' || this.props.position === 'bottom') {
-        var newLeft = 0 - width / 2 + parentPosition.width / 2;
+        var newTop = parentPosition.top - height - 10;
+        var newBottom = null;
+        var newLeft = parentPosition.left + parentPosition.width / 2 - width / 2;
         var newRight = null;
 
         if (this.props.position === 'top') {
           if (parentPosition.top - height <= 1) {
-            this.className += ' ' + _styleModule.default['tooltip-bottom'];
+            newTop = parentPosition.top + parentPosition.height + 5;
             this.setTriStyleBottom();
           } else {
-            this.className += ' ' + _styleModule.default['tooltip-top'];
             this.setTriStyleTop();
           }
         } else {
-          if (parentPosition.top + parentPosition.height + height + 10 <= window.innerHeight) {
-            this.className += ' ' + _styleModule.default['tooltip-bottom'];
+          if (parentPosition.top + parentPosition.height + height + 5 <= window.innerHeight) {
+            newTop = parentPosition.top + parentPosition.height + 5;
             this.setTriStyleBottom();
           } else {
-            this.className += ' ' + _styleModule.default['tooltip-top'];
             this.setTriStyleTop();
           }
         }
@@ -196,44 +192,51 @@ function (_React$Component) {
         }
 
         this.style = {
+          top: newTop,
+          bottom: newBottom,
           left: newLeft,
           right: newRight
         };
       } else if (this.props.position === 'right' || this.props.position === 'left') {
-        var newTop = 0 - height / 2 + parentPosition.height / 2;
-        var newBottom = null;
+        var _newTop = parentPosition.top + parentPosition.height / 2 - height / 2;
+
+        var _newBottom = null;
+
+        var _newLeft = parentPosition.left + parentPosition.width + 5;
+
+        var _newRight = null;
 
         if (this.props.position === 'right') {
-          if (parentPosition.left + parentPosition.width + width + 10 <= window.innerWidth) {
-            this.className += ' ' + _styleModule.default['tooltip-right'];
+          if (parentPosition.left + parentPosition.width + width + 5 <= window.innerWidth) {
             this.setTriStyleRight();
           } else {
-            this.className += ' ' + _styleModule.default['tooltip-left'];
+            _newLeft = parentPosition.left - width - 5;
             this.setTriStyleLeft();
           }
         } else {
           if (parentPosition.left - width - 10 > 0) {
-            this.className += ' ' + _styleModule.default['tooltip-left'];
+            _newLeft = parentPosition.left - width - 5;
             this.setTriStyleLeft();
           } else {
-            this.className += ' ' + _styleModule.default['tooltip-right'];
             this.setTriStyleRight();
           }
         }
 
         if (parentPosition.top + parentPosition.height / 2 + height / 2 + 10 > window.innerHeight) {
-          newTop = null;
-          newBottom = 0;
+          _newTop = null;
+          _newBottom = 0;
         }
 
         if (parentPosition.top + parentPosition.height / 2 - height / 2 < 10) {
-          newTop = 0;
-          newBottom = null;
+          _newTop = 0;
+          _newBottom = null;
         }
 
         this.style = {
-          top: newTop,
-          bottom: newBottom
+          top: _newTop,
+          bottom: _newBottom,
+          left: _newLeft,
+          right: _newRight
         };
       }
     }

@@ -6,8 +6,7 @@
 }
 
 
-.demo div {
-  position: relative;
+.demo>div {
   position: absolute;
 }
 

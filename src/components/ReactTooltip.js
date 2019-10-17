@@ -119,23 +119,23 @@ class ReactTooltip extends React.Component {
         
         if ( this.props.position === 'top' || this.props.position === 'bottom' ){
 
-            let newLeft = 0 - (width/2) + (parentPosition.width/2)
-            let newRight = null
+            let newTop    = parentPosition.top - height -10
+            let newBottom = null
+            let newLeft   = parentPosition.left + parentPosition.width/2 - width/2 
+            let newRight  = null
             
             if ( this.props.position === 'top' ) {
                 if ( (parentPosition.top - height) <= 1 ){
-                    this.className += (' ' + styles['tooltip-bottom'])
+                    newTop    = parentPosition.top + parentPosition.height + 5
                     this.setTriStyleBottom()
                 } else {
-                    this.className += (' ' + styles['tooltip-top'])
                     this.setTriStyleTop()
                 }
             } else {
-                if ( (parentPosition.top + parentPosition.height + height + 10 ) <= window.innerHeight ){
-                    this.className += (' ' + styles['tooltip-bottom'])
+                if ( (parentPosition.top + parentPosition.height + height + 5 ) <= window.innerHeight ){
+                    newTop    = parentPosition.top + parentPosition.height + 5
                     this.setTriStyleBottom()
                 } else {
-                    this.className += (' ' + styles['tooltip-top'])
                     this.setTriStyleTop()
                 }
             }
@@ -151,28 +151,30 @@ class ReactTooltip extends React.Component {
             }
     
             this.style = {
-                left: newLeft,
+                top: newTop,
+                bottom: newBottom,
+                left : newLeft,
                 right: newRight
             }
         } else if ( this.props.position === 'right' || this.props.position === 'left' ){
             
-            let newTop =  0 - (height/2) + (parentPosition.height/2)
+            let newTop    = parentPosition.top + parentPosition.height/2 - height/2 
             let newBottom = null
+            let newLeft   = parentPosition.left + parentPosition.width + 5
+            let newRight  = null
 
             if ( this.props.position === 'right' ) {
-                if ( (parentPosition.left + parentPosition.width + width + 10 ) <= window.innerWidth ){
-                    this.className += (' ' + styles['tooltip-right'])
+                if ( (parentPosition.left + parentPosition.width + width + 5 ) <= window.innerWidth ){
                     this.setTriStyleRight()
                 } else {
-                    this.className += (' ' + styles['tooltip-left'])
+                    newLeft  = parentPosition.left - width - 5
                     this.setTriStyleLeft()
                 }
             } else {
                 if ( (parentPosition.left - width -10) >0 ){
-                    this.className += (' ' + styles['tooltip-left'])
+                    newLeft  = parentPosition.left - width - 5
                     this.setTriStyleLeft()
                 } else {
-                    this.className += (' ' + styles['tooltip-right'])
                     this.setTriStyleRight()
                 }
             }
@@ -190,7 +192,9 @@ class ReactTooltip extends React.Component {
     
             this.style = {
                 top: newTop,
-                bottom: newBottom
+                bottom: newBottom,
+                left : newLeft,
+                right: newRight
             }
         }
     }
