@@ -242,9 +242,7 @@ function (_React$Component) {
     }
   }, {
     key: "componentDidUpdate",
-    value: function componentDidUpdate() {
-      this.first = false;
-    }
+    value: function componentDidUpdate() {}
   }, {
     key: "render",
     value: function render() {
@@ -252,10 +250,13 @@ function (_React$Component) {
         this.className += ' ' + this.props.className;
       }
 
+      if (this.state.show) {
+        this.className += ' ' + _styleModule.default['show'];
+        this.first = false;
+      }
+
       if (!this.first) {
-        if (this.state.show) {
-          this.className += ' ' + _styleModule.default['show'];
-        } else {
+        if (!this.state.show) {
           this.className += ' ' + _styleModule.default['hide'];
         }
       }

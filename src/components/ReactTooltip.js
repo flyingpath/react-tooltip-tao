@@ -200,7 +200,7 @@ class ReactTooltip extends React.Component {
     }
 
     componentDidUpdate() {
-        this.first = false
+        
     }
 
     render() {
@@ -208,10 +208,13 @@ class ReactTooltip extends React.Component {
             this.className += ' ' + this.props.className
         }
 
+        if (this.state.show){
+            this.className += ' ' + styles['show']
+            this.first = false
+        }
+
         if (!this.first){
-            if (this.state.show){
-                this.className += ' ' + styles['show']
-            } else {
+            if (!this.state.show) {
                 this.className += ' ' + styles['hide']
             }
         }
